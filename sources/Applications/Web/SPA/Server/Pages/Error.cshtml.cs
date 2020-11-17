@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace RH.Apps.Web.SPA.Server.Pages
+namespace RH.Apps.Web.SPA.Lite.Pages
 {
 	[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 	[IgnoreAntiforgeryToken]

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using Azure.Identity;
 
@@ -6,23 +6,25 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
-namespace RH.Apps.Web.SPA.Server
+namespace RH.Apps.Web.SPA.Lite
 {
 	public static class Program
 	{
-		public static void Main(string[] args) 
+		public static void Main(string[] args)
 			=> CreateHostBuilder(args).Build().Run();
 
 		public static IHostBuilder CreateHostBuilder(string[] args) =>
-		     Host
+			Host
 				.CreateDefaultBuilder(args)
 				.ConfigureAppConfiguration((_, config) =>
 				{
 					var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUri"));
-						config.AddAzureKeyVault(
-						keyVaultEndpoint,
+					config.AddAzureKeyVault(
+					keyVaultEndpoint,
 					new DefaultAzureCredential());
 				})
-				.ConfigureWebHostDefaults(webBuilder => _ = webBuilder.UseStartup<Startup>());
+				.ConfigureWebHostDefaults(webBuilder
+					=> webBuilder.UseStartup<Startup>()
+				);
 	}
 }
